@@ -53,9 +53,29 @@
       <h2>The Wave 1 collection</h2>
       <p class="section-lede">Three datasets, each built around the same principle: lineage-stamped records plus a blind benchmark nobody can game.</p>
 
-      <article class="dataset-row">
+      <div class="catalog-controls">
+        <div class="catalog-chips" role="group" aria-label="Filter datasets by domain">
+          <button type="button" class="catalog-chip is-selected" data-lane-filter="all" aria-pressed="true">All domains</button>
+          <button type="button" class="catalog-chip" data-lane-filter="weather" aria-pressed="false">Weather and climate</button>
+          <button type="button" class="catalog-chip" data-lane-filter="crops" aria-pressed="false">Crops and climate</button>
+          <button type="button" class="catalog-chip" data-lane-filter="carbon" aria-pressed="false">Carbon</button>
+        </div>
+        <label class="catalog-search">
+          <span class="catalog-search-label">Search datasets</span>
+          <input id="dataset-search" type="search" placeholder="Name, benchmark, source..." autocomplete="off">
+        </label>
+      </div>
+      <p class="catalog-count" id="dataset-count" aria-live="polite">Showing 3 of 3 datasets. 136 rows in v1.0 across the three datasets, every row a synthetic-labeled seed.</p>
+
+      <div class="catalog-empty" id="dataset-empty" hidden>
+        <h3>No datasets match that filter</h3>
+        <p>Nothing in Wave 1 fits the current domain and search. Clear them to see all three datasets again.</p>
+        <button type="button" class="btn btn-ghost" id="dataset-clear">Clear filter and search</button>
+      </div>
+
+      <article class="dataset-row" data-lane="weather">
         <div class="dataset-body">
-          <p class="dataset-lane">Weather and climate</p>
+          <p class="dataset-lane">Weather and climate <span class="seed-chip">Synthetic seed</span></p>
           <h3><a href="datasets/s2s-trust.html">S2S-TRUST v1</a></h3>
           <p>Subseasonal prediction, weeks 2 to 6: the 50-year predictability desert. Truth-lineage schema, a quarantine for incomplete provenance, and a sealed-window benchmark harness. Built on ERA5, ECMWF reforecasts, and NOAA GEFS.</p>
           <ul class="dataset-points">
@@ -67,15 +87,16 @@
         <div class="dataset-meta">
           <dl>
             <div><dt>Version</dt><dd>v1.0</dd></div>
+            <div><dt>Rows (v1.0)</dt><dd>30</dd></div>
             <div><dt>Delivery</dt><dd>API + Excel</dd></div>
             <div><dt>Benchmark</dt><dd>Sealed S2S harness</dd></div>
           </dl>
         </div>
       </article>
 
-      <article class="dataset-row flip">
+      <article class="dataset-row flip" data-lane="crops">
         <div class="dataset-body">
-          <p class="dataset-lane">Crops and climate</p>
+          <p class="dataset-lane">Crops and climate <span class="seed-chip">Synthetic seed</span></p>
           <h3><a href="datasets/climateshift-1.html">CLIMATESHIFT-1 v1</a></h3>
           <p>Crop performance under a shifting climate, hemp-first. Thirty trials with full trait panels: THC, CBD, CBG, lab accreditation, certificate-of-analysis hashes: and a rolling forward-year benchmark that never lets the test set leak into training.</p>
           <ul class="dataset-points">
@@ -87,15 +108,16 @@
         <div class="dataset-meta">
           <dl>
             <div><dt>Version</dt><dd>v1.0</dd></div>
+            <div><dt>Rows (v1.0)</dt><dd>70</dd></div>
             <div><dt>Delivery</dt><dd>API + Excel</dd></div>
             <div><dt>Benchmark</dt><dd>Forward-year, rolling</dd></div>
           </dl>
         </div>
       </article>
 
-      <article class="dataset-row">
+      <article class="dataset-row" data-lane="carbon">
         <div class="dataset-body">
-          <p class="dataset-lane">Carbon</p>
+          <p class="dataset-lane">Carbon <span class="seed-chip">Synthetic seed</span></p>
           <h3><a href="datasets/carbon-trust.html">CARBON-TRUST v1</a></h3>
           <p>Harmonized carbon-sequestration evidence: soil profiles, flux towers, biomass pixels, and a biochar stability annex. Method-code comparability gating means Walkley-Black and dry-combustion records are never silently pooled: plus MRV-BLIND, the first falsifiable soil-carbon MRV scoreboard.</p>
           <ul class="dataset-points">
@@ -107,6 +129,7 @@
         <div class="dataset-meta">
           <dl>
             <div><dt>Version</dt><dd>v1.0</dd></div>
+            <div><dt>Rows (v1.0)</dt><dd>36</dd></div>
             <div><dt>Delivery</dt><dd>API + Excel</dd></div>
             <div><dt>Benchmark</dt><dd>MRV-BLIND</dd></div>
           </dl>
@@ -149,16 +172,16 @@
       <div class="pricing-cols">
         <div class="pricing-card">
           <h3>API access</h3>
-          <p class="price">Toll-metered</p>
+          <p class="price">$0.01 to $0.10 per call</p>
           <p>Every call is metered against your subscription. Micro-tolls are priced so that pulling a dataset through the API costs the same as downloading it. The choice is about workflow, not price. Large datasets are API-only.</p>
         </div>
         <div class="pricing-card">
           <h3>Excel downloads</h3>
-          <p class="price">One-time fee</p>
+          <p class="price">$0.01 to $0.10 per download</p>
           <p>Download a versioned spreadsheet on top of your subscription. Pricing follows a dynamic volume curve: pennies while a dataset is new and unproven, scaling with downloads, never unaffordable. The exact fee is shown before you pay, every time.</p>
         </div>
       </div>
-      <p class="pricing-note">A Twistor subscription is required for everything, API and downloads alike. Grant-funded? Good: the pricing assumes it. If your lab needs an institutional quote, say so in the access request.</p>
+      <p class="pricing-note">Micro-tolls never exceed $0.10 per call or download, and the exact fee is shown before you pay, every time. No surprise charges. A Twistor subscription is required for everything, API and downloads alike. Grant-funded? Good: the pricing assumes it. If your lab needs an institutional quote, say so in the access request.</p>
     </div>
   </section>
 
