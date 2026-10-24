@@ -271,6 +271,25 @@ a { color: var(--violet-deep); }
 .faq details[open] summary::before { content: "– "; }
 .faq p { color: var(--ink-soft); margin: 0.8em 0 0; }
 
+/* ---------- faq + facts pages (TW-715) ---------- */
+.qa { border-top: 1px solid var(--line); padding: 26px 0; max-width: 760px; }
+.qa:last-child { border-bottom: 1px solid var(--line); }
+.qa h3 { font-size: 1.15rem; margin-bottom: 0.45em; }
+.qa p { color: var(--ink-soft); margin: 0; }
+
+.fact-list { margin: 0; max-width: 860px; }
+.fact-list > div {
+  display: grid; grid-template-columns: 200px 1fr; gap: 8px 24px;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+}
+.fact-list > div:first-child { border-top: 1px solid var(--line); }
+.fact-list dt { font-weight: 600; }
+.fact-list dd { margin: 0; color: var(--ink-soft); }
+
+@media (max-width: 700px) {
+  .fact-list > div { grid-template-columns: 1fr; gap: 2px; }
+}
+
 /* ---------- footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 40px 0; background: var(--paper-warm); }
 .footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
