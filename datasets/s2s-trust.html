@@ -5,6 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S2S-TRUST v1 | Twistor Data</title>
 <meta name="description" content="Subseasonal prediction data, weeks 2 to 6, with truth lineage and a sealed benchmark harness.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "S2S-TRUST",
+  "version": "1.0",
+  "url": "https://data.twistor.co/datasets/s2s-trust.html",
+  "description": "Subseasonal prediction data, weeks 2 to 6, with truth lineage and a sealed benchmark harness. Forecast and verification data built on ERA5 reanalysis, ECMWF reforecasts, and NOAA GEFS; every record names the truth source it is scored against. V1 rows are synthetic and labeled as such; real-data ingestion from open reanalysis and forecast archives is underway.",
+  "creator": { "@type": "Organization", "name": "Twistor Holdings LLC" },
+  "publisher": { "@type": "Organization", "name": "Twistor Holdings LLC" },
+  "isAccessibleForFree": false,
+  "conditionsOfAccess": "Active Twistor subscription required. API calls and downloads are micro-tolled per use, capped at $0.10 per call or download, with the exact fee shown before payment.",
+  "size": "30 rows (v1.0)",
+  "measurementTechnique": "Truth lineage labeled on every record; sealed-window benchmark harness scores predictions against held-out windows on a fixed schedule.",
+  "keywords": ["subseasonal forecasting", "weather prediction", "ERA5", "ECMWF reforecasts", "NOAA GEFS", "truth lineage"],
+  "inLanguage": "en",
+  "distribution": [
+    { "@type": "DataDownload", "encodingFormat": "application/json", "name": "API access (subscription required)" },
+    { "@type": "DataDownload", "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "name": "Excel download (one-time fee)" }
+  ]
+}
+</script>
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
