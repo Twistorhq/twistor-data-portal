@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trial sites on the map: Twistor Data</title>
+<meta name="description" content="CLIMATESHIFT-1 v1 hemp trial records on an interactive map, powered by the GeoLibre viewer (MIT), self-hosted on the portal.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .geo-frame-wrap {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; background: var(--paper-warm);
+  }
+  .geo-frame { display: block; width: 100%; height: min(78vh, 720px); border: 0; }
+  @media (max-width: 640px) { .geo-frame { height: 70vh; } }
+  .geo-sites { margin: 1.5em 0 0; padding: 0; list-style: none; }
+  .geo-sites li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .geo-sites li:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="../index.html" aria-label="Twistor Data home">
+      <svg class="brand-mark" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="6" fill="#5b4fd6"/><path d="M9 19V9l10 10V9" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="brand-name">Twistor <strong>Data</strong></span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../index.html#datasets">Datasets</a></li>
+        <li><a href="../index.html#trust">Why trust it</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="../facts.html">Facts</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
+        <li><a class="nav-cta" href="../index.html#access">Get access</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section">
+    <div class="wrap">
+      <p class="dataset-lane">Geo viewer proof <span class="seed-chip">Synthetic seed</span></p>
+      <h1 style="font-size:clamp(1.9rem,4vw,2.6rem)">CLIMATESHIFT-1 trial sites, on the map</h1>
+      <p class="section-lede">Every v1 hemp trial record in CLIMATESHIFT-1, plotted at its trial
+      site. Click a point for the full record: cultivar, yield, THC and CBD panel,
+      lab accreditation, and the compliance flag. The viewer is
+      <a class="text-link" href="https://github.com/opengeos/GeoLibre">GeoLibre</a>
+      v3.5.2 (MIT), self-hosted on this portal, running in read-only viewer mode.</p>
+
+      <div class="geo-frame-wrap">
+        <iframe class="geo-frame" id="geo-frame" title="GeoLibre map of CLIMATESHIFT-1 v1 hemp trial records"
+          loading="lazy" allowfullscreen></iframe>
+      </div>
+      <p class="docs-note" style="margin-top:1em">
+        <a class="text-link" id="geo-fullscreen" href="app/index.html">Open the viewer full screen</a>
+        if the embedded frame is tight on your device. Working offline or on a
+        restricted network? The same records ship as a
+        <a class="text-link" id="geo-project" href="app/index.html">self-contained
+        project file</a> with the data embedded and a blank basemap, so the
+        layer loads with no tile service at all.</p>
+
+      <h2 style="margin-top:2em">What you are looking at</h2>
+      <p>The layer is generated from the dataset's own seed records
+      (<code>geo/tools/build_geojson.py</code> in this repo, source seed in lbt-os).
+      The seed records name trial locations rather than coordinates, so each point
+      sits at the city coordinate of its named site. Measurement values are the
+      records' own, unmodified. V1 rows are synthetic and labeled as such, here
+      and everywhere on the portal.</p>
+      <ul class="geo-sites">
+        <li><strong>Burlington, VT</strong>: UVM Extension, 6 records</li>
+        <li><strong>Corvallis, OR</strong>: Oregon State, 6 records</li>
+        <li><strong>Columbia, MO</strong>: Missouri, 6 records</li>
+        <li><strong>Ithaca, NY</strong>: Cornell, 6 records</li>
+        <li><strong>Fort Collins, CO</strong>: CSU, 6 records</li>
+      </ul>
+      <p style="margin-top:1.5em"><a class="text-link" href="../datasets/climateshift-1.html">Back to the CLIMATESHIFT-1 dataset page</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>Prepared by Twistor Holdings LLC</p>
+    <p class="footer-links"><a href="../facts.html">Facts</a> / <a href="../faq.html">FAQ</a></p>
+    <p class="footer-note">Map viewer: GeoLibre v3.5.2, MIT licensed, © the GeoLibre contributors. Basemap data © OpenStreetMap contributors.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    // GeoLibre's data= deep link only accepts absolute http(s) URLs
+    // (see dataUrlParameters/httpUrl in the app source), so resolve
+    // the layer file against this page's own origin.
+    var dataUrl = new URL("data/climateshift-1-hemp.geojson", window.location.href).href;
+    var params = "data=" + encodeURIComponent(dataUrl) +
+      "&layout=viewer&welcome=0&theme=light";
+    document.getElementById("geo-frame").src = "app/index.html?" + params;
+    document.getElementById("geo-fullscreen").href = "app/index.html?" + params;
+    var projectUrl = new URL("data/climateshift-1-project.geolibre.json", window.location.href).href;
+    document.getElementById("geo-project").href = "app/index.html?url=" +
+      encodeURIComponent(projectUrl) + "&layout=viewer&welcome=0&theme=light";
+  })();
+</script>
+<script src="../app.js"></script>
+</body>
+</html>
