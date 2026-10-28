@@ -12,7 +12,7 @@
   --violet: #5b4fd6;
   --violet-deep: #4538b8;
   --violet-wash: #efedfb;
-  --radius: 10px;
+  --radius: 8px;
   --font: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-mono: "SF Mono", "Cascadia Code", Consolas, monospace;
 }
@@ -27,7 +27,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   line-height: 1.65;
-  font-size: 17px;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -40,12 +40,12 @@ body {
 }
 .skip-link:focus { left: 8px; top: 8px; }
 
-h1, h2, h3 { line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 0.6em; }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 0.6em; text-wrap: balance; }
 h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; }
 h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; }
-h3 { font-size: 1.2rem; font-weight: 650; }
+h3 { font-size: 1.125rem; font-weight: 650; }
 
-p { margin: 0 0 1em; }
+p { margin: 0 0 1em; text-wrap: pretty; }
 a { color: var(--violet-deep); }
 .section:not(.section-dark) a:hover, .site-header a:hover, .site-footer a:hover { color: var(--violet); }
 
@@ -87,7 +87,7 @@ a { color: var(--violet-deep); }
 .crumbs li + li::before { content: "/"; margin-right: 10px; color: var(--ink-faint); }
 .crumbs a { color: var(--ink-soft); text-decoration: none; }
 .crumbs a:hover { color: var(--violet-deep); }
-.lede { font-size: 1.2rem; color: var(--ink-soft); max-width: 640px; }
+.lede { font-size: 1.125rem; color: var(--ink-soft); max-width: 640px; }
 .hero-actions { display: flex; gap: 14px; margin: 2em 0; flex-wrap: wrap; }
 
 .btn {
@@ -99,6 +99,20 @@ a { color: var(--violet-deep); }
 .btn-primary:hover { background: var(--violet-deep); color: #fff; }
 .btn-ghost { border-color: var(--line); color: var(--ink); background: #fff; }
 .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+/* Motion (TW-728, vendored landing-page-design B7): state changes ease on
+   the base curve, color and border only, never layout properties. */
+.btn, .nav-cta, .catalog-chip, .copy-btn, .text-link, .catalog-search input {
+  transition: background-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-actions .text-link { align-self: center; }
+
+/* Measure (TW-728): running text caps near 68ch so lines stay readable
+   at the full 1080px wrap instead of stretching past 90 characters. */
+.dataset-body > p, .faq p, .trust-item p { max-width: 68ch; }
+.v1-note, .pricing-note, .docs-note, .footer-note { max-width: 65ch; }
 
 .hero-facts {
   display: flex; gap: 48px; margin: 3em 0 0; padding: 0;
@@ -259,6 +273,7 @@ a { color: var(--violet-deep); }
   outline: 2px solid var(--violet); border-color: var(--violet);
 }
 .form-field textarea { resize: vertical; }
+.form-field ::placeholder { color: #b9b2a4; opacity: 1; }
 .form-note { min-height: 1.5em; color: #b9aef5; font-size: 0.95rem; }
 
 /* ---------- faq ---------- */
@@ -326,6 +341,7 @@ a { color: var(--violet-deep); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
 }
 
 /* Wide mode (TW-667): on ultrawide the catalog grows instead of floating
