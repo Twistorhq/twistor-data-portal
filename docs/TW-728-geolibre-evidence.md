@@ -42,7 +42,7 @@ merging is Justynn's word.
   the embed build still bundles the DuckDB WASM locally by design (the
   embed target is the offline-capable build), which is most of the size
   below.
-- Result: 1,027 files, 201 MB total, largest single file 41 MB
+- Result: 1,028 files, 201 MB total, largest single file 41 MB
   (DuckDB WASM). PGlite loads from a CDN on first use in this
   configuration (`GEOLIBRE_PGLITE_CDN=1` is part of the upstream embed
   build).
@@ -54,7 +54,10 @@ merging is Justynn's word.
   drops relative URLs. The wrapper therefore resolves the layer URL
   against its own origin in script. First version of the wrapper used a
   relative URL and loaded no layer; the server log proved the app never
-  fetched the file. Fixed and re-verified.
+  fetched the file. Fixed and re-verified. The log is committed at
+  `docs/tw728/server-access.log`: its first app-shell request carries the
+  relative `data=` URL with no GeoJSON fetch after it, followed by the
+  corrected absolute-URL runs.
 - The `data=` loader waits for the map API, which is handed over on the
   basemap's `style.load`. If the basemap style cannot load, the layer
   load never starts. The `?url=` project route does not have this
@@ -63,13 +66,15 @@ merging is Justynn's word.
 ## Proof captured in this sandbox
 
 - HTTP: wrapper, app shell, GeoJSON, and project file all serve 200 from
-  the branch (local static server, access log retained during the run).
+  the branch (local static server; the run's access log is committed at
+  `docs/tw728/server-access.log`).
 - Project route, rendered in headless Chromium (SwiftShader WebGL):
   the app fetched the project file, applied the project map view
   (status bar reads Zoom 3.00, eye altitude 9,635 km, 500 km scale bar),
   and the Layers panel lists "CLIMATESHIFT-1 hemp trial records" as a
   visible layer. Screenshot: `docs/tw728/geo-project-map.png`. A DOM dump
-  of the same run contains the layer name and layer id
+  of the same run, committed at `docs/tw728/project-route-dom.html`,
+  contains the layer name and layer id
   (`climateshift-1-hemp-records`) in the rendered panel.
 - Wrapper route: the portal page renders and the GeoLibre app boots
   inside the iframe (toolbar, Layers panel, map controls).
@@ -108,3 +113,19 @@ merging is Justynn's word.
    70vh under 640px, full-screen link offered) and GeoLibre's viewer
    layout is touch-capable, but this was verified by code and layout
    inspection only, not on a physical device.
+
+## Fix round (Rosa review M1/N1/N2, 2026-10-28)
+
+- M1: `geo/tools/build_geojson.py` is now executable and ruff-formatted.
+  `python3 -m ruff check geo/tools/build_geojson.py` returns "All checks
+  passed!"; `python3 -m ruff format --check geo/tools/build_geojson.py`
+  returns "1 file already formatted". The formatted generator was
+  re-run against the same lbt-os seed: both outputs are byte-identical
+  to the committed data files (GeoJSON md5
+  `3da35f0b6f3b5aa33bf66e85c946d60e`, project JSON md5
+  `ad932045d2304088beabcc30649ecfde`, before and after formatting).
+- N1: the two cited proof artifacts are committed in this branch:
+  `docs/tw728/server-access.log` (the run's static-server access log)
+  and `docs/tw728/project-route-dom.html` (the project-route DOM dump).
+- N2: the build file count above is corrected to 1,028, matching the
+  committed `geo/app` tree.

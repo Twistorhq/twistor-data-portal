@@ -44,17 +44,12 @@ def load_seed_module(lbt_os: Path):
     The seed functions return plain dicts and never touch models at
     runtime; the stub keeps this generator stdlib-only.
     """
-    seed_path = (
-        lbt_os
-        / "backend/app/data_layer/science/crop_climate/seed.py"
-    )
+    seed_path = lbt_os / "backend/app/data_layer/science/crop_climate/seed.py"
     pkg = types.ModuleType("cc_seed_pkg")
     pkg.__path__ = [str(seed_path.parent)]
     sys.modules["cc_seed_pkg"] = pkg
     sys.modules["cc_seed_pkg.models"] = types.ModuleType("models")
-    loader = importlib.machinery.SourceFileLoader(
-        "cc_seed_pkg.seed", str(seed_path)
-    )
+    loader = importlib.machinery.SourceFileLoader("cc_seed_pkg.seed", str(seed_path))
     spec = importlib.util.spec_from_loader(loader.name, loader)
     module = importlib.util.module_from_spec(spec)
     sys.modules[loader.name] = module
@@ -64,11 +59,15 @@ def load_seed_module(lbt_os: Path):
 
 def main() -> int:
     here = Path(__file__).resolve().parent
-    lbt_os = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(
-        "~/workspace/repos/lbt-os"
-    ).expanduser()
-    out = Path(sys.argv[2]) if len(sys.argv) > 2 else (
-        here.parent / "data" / "climateshift-1-hemp.geojson"
+    lbt_os = (
+        Path(sys.argv[1])
+        if len(sys.argv) > 1
+        else Path("~/workspace/repos/lbt-os").expanduser()
+    )
+    out = (
+        Path(sys.argv[2])
+        if len(sys.argv) > 2
+        else (here.parent / "data" / "climateshift-1-hemp.geojson")
     )
 
     seed = load_seed_module(lbt_os)

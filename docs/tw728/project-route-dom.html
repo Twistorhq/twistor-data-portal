@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="color-scheme: light;" data-geolibre-project-generation="1" data-geolibre-project-ready-generation="1"><head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="./favicon.png" sizes="32x32">
+    <link rel="icon" href="./favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <!-- viewport-fit=cover lets the page extend under the mobile status/nav bars
+         and display cutouts so env(safe-area-inset-*) report their sizes; the app
+         shell then pads itself by those insets (see #root in src/index.css). -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="A free and open-source, lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data, running in the browser, on the desktop, on mobile, and inside Jupyter notebooks while keeping your data local and private.">
+    <meta name="theme-color" content="#2f8f85">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Apple-prefixed variant kept for older iOS Safari (pre-17.4) home-screen
+         standalone mode; the standard tag above is what newer browsers expect. -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="GeoLibre">
+    <title>GeoLibre</title>
+    <!-- Keep startup feedback independent of the JS/CSS module graph. React
+         replaces this content on its first render. Scope styles to the
+         placeholder so they cannot change the mounted app. -->
+    <style>
+      #startup-placeholder {
+        box-sizing: border-box;
+        position: fixed;
+        inset: 0;
+        overflow: auto;
+        padding: 12vh 24px 32px;
+        background: #f8fafc;
+        color: #1e293b;
+        font: 16px/1.6 system-ui, sans-serif;
+        text-align: center;
+        color-scheme: light dark;
+      }
+      #startup-placeholder h1 {
+        font-size: 24px;
+      }
+      #startup-placeholder p {
+        max-width: 36rem;
+        margin: 16px auto;
+      }
+      #startup-placeholder a {
+        color: #0f766e;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      #startup-placeholder a:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 4px;
+      }
+      @media (prefers-color-scheme: dark) {
+        #startup-placeholder {
+          background: #0f172a;
+          color: #e2e8f0;
+        }
+        #startup-placeholder a {
+          color: #5eead4;
+        }
+      }
+    </style>
+    <script type="module" crossorigin="" src="./assets/main-B3aJEVgD.js"></script>
+    <link rel="modulepreload" crossorigin="" href="./assets/rolldown-runtime-DpEnGzO4.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/modulepreload-polyfill-DIeKMq_K.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/maplibre-5KtAGCr5.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/earthdata-relay-DHsBUrbe.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/core-C25TPJda.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/react-CuRERQWl.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/src-py7zNGQK.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/is-tauri-Dp7kKqvP.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/platform-DOGrChaa.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/is-mobile-BJwsJsnZ.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/credential-store-BgI3QHgG.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/plugin-credentials-P5jSx7_T.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/preload-helper-DDTdSCVL.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/deployment-env-Bvu8cbZr.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/share-fetch-Jz1B-5oj.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/share-oauth-CUaqlfOc.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/arcgis-oauth-BhXK6mec.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/geocoding-auth-CEP2g_wc.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/jsx-runtime-C132ml34.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/tslib-DrOrLU3H.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/context-DV10802j.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/client-7B3n5UuI.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/layer-labels-m8jWmWYF.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/i18next-DA3ruDLl.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/i18nInstance-DiKcq1MF.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/fetch-error-CDE3z9rh.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/diagnostics-l3cP6cdN.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/notify-CeW4Dzf-.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/storage-keys-BoyZr3B3.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/i18n-BgcIiJy4.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/auth-return-url-BX1RTLAm.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/native-coordinate-open-CI3ahPnN.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/provider-BTTWFQg7.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/useDesktopSettings-CEARfsIg.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/constants-C0HuQDTp.js">
+    <link rel="modulepreload" crossorigin="" href="./assets/service-library-CtDvdvQZ.js">
+    <link rel="stylesheet" crossorigin="" href="./assets/main-BPkwCN81.css">
+  <style id="maplibre-gl-basemap-style-fixes">
+.basemap-control-panel .basemap-control-select {
+  color: #111827;
+  color-scheme: light;
+}
+
+.basemap-control-panel .basemap-control-select option {
+  background-color: #fff;
+  color: #111827;
+  color-scheme: light;
+}
+
+.basemap-control-panel .basemap-control-select.is-proxied {
+  display: none;
+}
+
+.basemap-control-panel .basemap-select-proxy {
+  align-items: center;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%23111827' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #111827;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  height: 30px;
+  justify-content: flex-start;
+  line-height: 28px;
+  min-width: 0;
+  overflow: hidden;
+  padding: 4px 28px 4px 6px;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.basemap-control-panel .basemap-select-proxy:focus-visible,
+.basemap-control-panel .basemap-select-proxy.is-open {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+  outline: none;
+}
+
+.basemap-select-menu {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+  box-sizing: border-box;
+  color: #111827;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 0;
+  position: fixed;
+  z-index: 10000;
+}
+
+.basemap-select-menu button {
+  background: #fff;
+  border: 0;
+  box-sizing: border-box;
+  color: #111827;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  height: 26px;
+  line-height: 26px;
+  overflow: hidden;
+  padding: 0 8px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.basemap-select-menu button:hover {
+  background: #f3f4f6;
+}
+
+.basemap-select-menu button.is-selected {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Dark theme: retarget the light literals above onto the app's design tokens.
+   The menu is appended to <body>, so it is matched by .dark on <html>. */
+.dark .basemap-control-panel .basemap-control-select,
+.dark .basemap-control-panel .basemap-control-select option {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  color-scheme: dark;
+}
+
+.dark .basemap-control-panel .basemap-select-proxy {
+  background-color: hsl(var(--background));
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%23cbd5e1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.dark .basemap-control-panel .basemap-select-proxy:focus-visible,
+.dark .basemap-control-panel .basemap-select-proxy.is-open {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.3);
+}
+
+.dark .basemap-select-menu {
+  background: hsl(var(--popover));
+  border-color: hsl(var(--border));
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.45);
+  color: hsl(var(--popover-foreground));
+}
+
+.dark .basemap-select-menu button {
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+}
+
+.dark .basemap-select-menu button:hover,
+.dark .basemap-select-menu button:focus-visible {
+  background: hsl(var(--accent));
+  outline: none;
+}
+
+.dark .basemap-select-menu button.is-selected {
+  background: #2563eb;
+  color: #fff;
+}
+</style><style id="maplibre-gl-geoagent-style-fixes">
+.geoagent-panel select {
+  color: #17202a;
+  color-scheme: light;
+}
+
+.geoagent-panel select option {
+  background-color: #fff;
+  color: #17202a;
+  color-scheme: light;
+}
+
+.geoagent-panel select.is-proxied {
+  display: none;
+}
+
+.geoagent-panel .geoagent-select-proxy {
+  align-items: center;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%2317202a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  border: 1px solid #d7dde5;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #17202a;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  height: 36px;
+  justify-content: flex-start;
+  line-height: 34px;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 30px 0 10px;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.geoagent-panel .geoagent-select-proxy:focus-visible,
+.geoagent-panel .geoagent-select-proxy.is-open {
+  border-color: #2f8f85;
+  box-shadow: inset 0 0 0 1px #2f8f85;
+  outline: none;
+}
+
+.geoagent-select-menu {
+  background: #fff;
+  border: 1px solid #d7dde5;
+  border-radius: 0;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+  box-sizing: border-box;
+  color: #17202a;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  margin: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 0;
+  position: fixed;
+  z-index: 10000;
+}
+
+.geoagent-select-menu button {
+  background: #fff;
+  border: 0;
+  box-sizing: border-box;
+  color: #17202a;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.geoagent-select-menu button:hover,
+.geoagent-select-menu button.is-active {
+  background: #f1f5f9;
+}
+
+.geoagent-select-menu button.is-selected {
+  background: #2f8f85;
+  color: #fff;
+}
+
+/* Dark theme: retarget the light literals above onto the app's design tokens. */
+.dark .geoagent-panel select,
+.dark .geoagent-panel select option {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  color-scheme: dark;
+}
+
+.dark .geoagent-panel .geoagent-select-proxy {
+  background-color: hsl(var(--background));
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%23cbd5e1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  border-color: hsl(var(--input));
+  color: hsl(var(--foreground));
+}
+
+.dark .geoagent-select-menu {
+  background: hsl(var(--popover));
+  border-color: hsl(var(--border));
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.45);
+  color: hsl(var(--popover-foreground));
+}
+
+.dark .geoagent-select-menu button {
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+}
+
+.dark .geoagent-select-menu button:hover,
+.dark .geoagent-select-menu button.is-active {
+  background: hsl(var(--accent));
+}
+
+.dark .geoagent-select-menu button.is-selected {
+  background: #2f8f85;
+  color: #fff;
+}
+</style><style id="maplibre-gl-lidar-style">
+.lidar-control-panel,
+.lidar-control-panel * {
+  all: revert;
+  box-sizing: border-box;
+}
+
+.lidar-control-panel input[type="checkbox"],
+.lidar-control-panel input[type="radio"] {
+  box-sizing: revert;
+}
+
+/**
+ * MapLibre GL LiDAR Control Styles
+ */
+
+/* ====================================================================
+ * Theme tokens
+ *
+ * All colors are driven by these `--lidar-*` custom properties so the
+ * control adapts to light/dark themes. The defaults below are the light
+ * theme. The dark values are applied either automatically (when the OS /
+ * browser reports `prefers-color-scheme: dark`) or explicitly when the
+ * host adds the `lidar-theme-dark` class to <html> (done by the control
+ * when constructed with `theme: 'dark'`).
+ *
+ * Variables are defined on :root so that panels and modals which are
+ * appended to <body> (metadata panel, chart popup, tooltip) inherit them.
+ * ==================================================================== */
+:root {
+  --lidar-bg: #ffffff;
+  --lidar-bg-muted: #f8f9fa;
+  --lidar-bg-subtle: #f0f0f0;
+  --lidar-bg-code: #f5f5f5;
+  --lidar-hover: #e0e0e0;
+  --lidar-active: #d0d0d0;
+
+  --lidar-border: #e0e0e0;
+  --lidar-border-input: #dddddd;
+  --lidar-border-strong: #cccccc;
+  --lidar-border-hover: #bbbbbb;
+  --lidar-border-subtle: rgba(0, 0, 0, 0.15);
+  --lidar-border-dashed: #dddddd;
+
+  --lidar-text: #333333;
+  --lidar-text-strong: #1f2a37;
+  --lidar-text-secondary: #555555;
+  --lidar-text-tertiary: #666666;
+  --lidar-text-muted: #888888;
+  --lidar-text-faint: #999999;
+
+  --lidar-accent: #159895;
+  --lidar-accent-hover: #128784;
+  --lidar-accent-border: #128583;
+  --lidar-accent-dark: #0f6d6b;
+  --lidar-accent-darker: #0b5b59;
+  --lidar-accent-soft: #f0faf9;
+  --lidar-accent-ring: rgba(21, 152, 149, 0.15);
+  --lidar-on-accent: #ffffff;
+
+  --lidar-shadow: rgba(0, 0, 0, 0.1);
+  --lidar-shadow-modal: rgba(0, 0, 0, 0.3);
+  --lidar-backdrop: rgba(0, 0, 0, 0.5);
+  --lidar-overlay: rgba(255, 255, 255, 0.95);
+  --lidar-toggle-hover: rgba(0, 0, 0, 0.05);
+  --lidar-scrollbar: rgba(0, 0, 0, 0.3);
+  --lidar-scrollbar-hover: rgba(0, 0, 0, 0.5);
+  --lidar-tooltip-bg: rgba(0, 0, 0, 0.85);
+  --lidar-tooltip-text: #ffffff;
+
+  --lidar-error-bg: #fff5f5;
+  --lidar-error-border: #ffcdd2;
+  --lidar-error-text: #c62828;
+
+  --lidar-danger: #dc3545;
+  --lidar-danger-bg: #fff5f5;
+  --lidar-danger-on: #ffffff;
+
+  --lidar-info-bg: #e3f2fd;
+  --lidar-info-text: #1565c0;
+  --lidar-info-border: #90caf9;
+
+  --lidar-resize-grip: #cccccc;
+  --lidar-resize-grip-hover: #999999;
+
+  /* Canvas chart tokens (read from JS via getComputedStyle) */
+  --lidar-chart-bg: #f8f8f8;
+  --lidar-chart-grid: #dddddd;
+  --lidar-chart-axis: #333333;
+  --lidar-chart-text: #333333;
+  --lidar-chart-muted: #888888;
+  --lidar-chart-highlight: #000000;
+}
+
+/* Dark theme values, shared by auto-detection and the forced class. */
+@media (prefers-color-scheme: dark) {
+  :root:not(.lidar-theme-light) {
+    --lidar-bg: #1f2127;
+    --lidar-bg-muted: #2a2d35;
+    --lidar-bg-subtle: #313640;
+    --lidar-bg-code: #14161a;
+    --lidar-hover: #3a3f4a;
+    --lidar-active: #454b58;
+
+    --lidar-border: #3a3f4a;
+    --lidar-border-input: #454b58;
+    --lidar-border-strong: #4f5662;
+    --lidar-border-hover: #5a626f;
+    --lidar-border-subtle: rgba(255, 255, 255, 0.15);
+    --lidar-border-dashed: #4f5662;
+
+    --lidar-text: #e6e8ec;
+    --lidar-text-strong: #f2f4f7;
+    --lidar-text-secondary: #c3c8d1;
+    --lidar-text-tertiary: #a7adb8;
+    --lidar-text-muted: #8b919c;
+    --lidar-text-faint: #757b86;
+
+    --lidar-accent: #1bb3af;
+    --lidar-accent-hover: #19a3a0;
+    --lidar-accent-border: #17928f;
+    --lidar-accent-dark: #2bc7c3;
+    --lidar-accent-darker: #3ad4d0;
+    --lidar-accent-soft: rgba(27, 179, 175, 0.18);
+    --lidar-accent-ring: rgba(27, 179, 175, 0.3);
+    --lidar-on-accent: #ffffff;
+
+    --lidar-shadow: rgba(0, 0, 0, 0.5);
+    --lidar-shadow-modal: rgba(0, 0, 0, 0.6);
+    --lidar-backdrop: rgba(0, 0, 0, 0.65);
+    --lidar-overlay: rgba(25, 27, 31, 0.95);
+    --lidar-toggle-hover: rgba(255, 255, 255, 0.08);
+    --lidar-scrollbar: rgba(255, 255, 255, 0.25);
+    --lidar-scrollbar-hover: rgba(255, 255, 255, 0.4);
+    --lidar-tooltip-bg: rgba(0, 0, 0, 0.9);
+    --lidar-tooltip-text: #ffffff;
+
+    --lidar-error-bg: rgba(198, 40, 40, 0.15);
+    --lidar-error-border: rgba(198, 40, 40, 0.5);
+    --lidar-error-text: #f1a9a9;
+
+    --lidar-danger: #e5546a;
+    --lidar-danger-bg: rgba(220, 53, 69, 0.15);
+    --lidar-danger-on: #ffffff;
+
+    --lidar-info-bg: rgba(21, 101, 192, 0.22);
+    --lidar-info-text: #7fb6f0;
+    --lidar-info-border: rgba(144, 202, 249, 0.4);
+
+    --lidar-resize-grip: #5a626f;
+    --lidar-resize-grip-hover: #8b919c;
+
+    --lidar-chart-bg: #1a1c20;
+    --lidar-chart-grid: #3a3f4a;
+    --lidar-chart-axis: #c3c8d1;
+    --lidar-chart-text: #c3c8d1;
+    --lidar-chart-muted: #8b919c;
+    --lidar-chart-highlight: #ffffff;
+  }
+}
+
+/* Forced dark theme (theme: 'dark'), overrides OS preference. */
+:root.lidar-theme-dark {
+  --lidar-bg: #1f2127;
+  --lidar-bg-muted: #2a2d35;
+  --lidar-bg-subtle: #313640;
+  --lidar-bg-code: #14161a;
+  --lidar-hover: #3a3f4a;
+  --lidar-active: #454b58;
+
+  --lidar-border: #3a3f4a;
+  --lidar-border-input: #454b58;
+  --lidar-border-strong: #4f5662;
+  --lidar-border-hover: #5a626f;
+  --lidar-border-subtle: rgba(255, 255, 255, 0.15);
+  --lidar-border-dashed: #4f5662;
+
+  --lidar-text: #e6e8ec;
+  --lidar-text-strong: #f2f4f7;
+  --lidar-text-secondary: #c3c8d1;
+  --lidar-text-tertiary: #a7adb8;
+  --lidar-text-muted: #8b919c;
+  --lidar-text-faint: #757b86;
+
+  --lidar-accent: #1bb3af;
+  --lidar-accent-hover: #19a3a0;
+  --lidar-accent-border: #17928f;
+  --lidar-accent-dark: #2bc7c3;
+  --lidar-accent-darker: #3ad4d0;
+  --lidar-accent-soft: rgba(27, 179, 175, 0.18);
+  --lidar-accent-ring: rgba(27, 179, 175, 0.3);
+  --lidar-on-accent: #ffffff;
+
+  --lidar-shadow: rgba(0, 0, 0, 0.5);
+  --lidar-shadow-modal: rgba(0, 0, 0, 0.6);
+  --lidar-backdrop: rgba(0, 0, 0, 0.65);
+  --lidar-overlay: rgba(25, 27, 31, 0.95);
+  --lidar-toggle-hover: rgba(255, 255, 255, 0.08);
+  --lidar-scrollbar: rgba(255, 255, 255, 0.25);
+  --lidar-scrollbar-hover: rgba(255, 255, 255, 0.4);
+  --lidar-tooltip-bg: rgba(0, 0, 0, 0.9);
+  --lidar-tooltip-text: #ffffff;
+
+  --lidar-error-bg: rgba(198, 40, 40, 0.15);
+  --lidar-error-border: rgba(198, 40, 40, 0.5);
+  --lidar-error-text: #f1a9a9;
+
+  --lidar-danger: #e5546a;
+  --lidar-danger-bg: rgba(220, 53, 69, 0.15);
+  --lidar-danger-on: #ffffff;
+
+  --lidar-info-bg: rgba(21, 101, 192, 0.22);
+  --lidar-info-text: #7fb6f0;
+  --lidar-info-border: rgba(144, 202, 249, 0.4);
+
+  --lidar-resize-grip: #5a626f;
+  --lidar-resize-grip-hover: #8b919c;
+
+  --lidar-chart-bg: #1a1c20;
+  --lidar-chart-grid: #3a3f4a;
+  --lidar-chart-axis: #c3c8d1;
+  --lidar-chart-text: #c3c8d1;
+  --lidar-chart-muted: #8b919c;
+  --lidar-chart-highlight: #ffffff;
+}
+
+/* Container - matches maplibregl-ctrl styling.
+   The selector is intentionally more specific than MapLibre's
+   `.maplibregl-ctrl-group` so the themed background always wins regardless of
+   stylesheet import order, keeping the toggle icon's contrast correct. */
+.lidar-control,
+.maplibregl-ctrl-group.lidar-control {
+  background: var(--lidar-bg);
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px var(--lidar-shadow);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Toggle button - 29x29 to match navigation control. Scoped under
+   .lidar-control so the icon color reliably overrides MapLibre's default
+   button styling and keeps strong contrast against the themed background. */
+.lidar-control .lidar-control-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  color: var(--lidar-text-strong);
+}
+
+.lidar-control .lidar-control-toggle:hover {
+  background-color: var(--lidar-toggle-hover);
+}
+
+.lidar-control-toggle .lidar-control-icon {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.lidar-control-toggle .lidar-control-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Panel - positioned dynamically by JavaScript for floating behavior */
+.lidar-control-panel {
+  position: absolute;
+  /* Position is set dynamically by _updatePanelPosition() */
+  background: var(--lidar-bg);
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px var(--lidar-shadow);
+  width: 380px;
+  /* Panel is a flex column: header stays fixed, content scrolls.
+     overflow is hidden so the resize handle stays pinned to the corner
+     and rounded corners clip cleanly. Horizontal padding lives on the header
+     and content (not the panel) so the content's scrollbar sits flush to the
+     panel edge instead of overlapping the inner components. */
+  overflow: hidden;
+  z-index: 1000;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  display: none;
+  flex-direction: column;
+  box-sizing: border-box;
+  color: var(--lidar-text);
+}
+
+.lidar-control-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lidar-control-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lidar-control-panel::-webkit-scrollbar-thumb {
+  background-color: var(--lidar-scrollbar);
+  border-radius: 3px;
+}
+
+.lidar-control-panel::-webkit-scrollbar-thumb:hover {
+  background-color: var(--lidar-scrollbar-hover);
+}
+
+.lidar-control-panel.expanded {
+  display: flex;
+}
+
+/* Resize handles - one fixed in each bottom corner. The bottom-right handle
+   grows the panel rightward, the bottom-left handle leftward; both grow it
+   downward. */
+.lidar-control-resize-handle {
+  position: absolute;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  z-index: 3;
+  touch-action: none;
+}
+
+.lidar-control-resize-handle::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  width: 7px;
+  height: 7px;
+  border-color: var(--lidar-resize-grip);
+  border-style: solid;
+  opacity: 0.7;
+}
+
+.lidar-control-resize-handle:hover::after {
+  border-color: var(--lidar-resize-grip-hover);
+  opacity: 1;
+}
+
+.lidar-control-resize-right {
+  right: 0;
+  cursor: nwse-resize;
+}
+
+.lidar-control-resize-right::after {
+  right: 3px;
+  border-width: 0 2px 2px 0;
+}
+
+.lidar-control-resize-left {
+  left: 0;
+  cursor: nesw-resize;
+}
+
+.lidar-control-resize-left::after {
+  left: 3px;
+  border-width: 0 0 2px 2px;
+}
+
+/* Panel header */
+.lidar-control-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--lidar-text);
+  padding: 12px 8px 8px 8px;
+  border-bottom: 1px solid var(--lidar-border);
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.lidar-control-title {
+  flex: 1 1 auto;
+  font-size: 13px;
+}
+
+.lidar-control-close {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: var(--lidar-text-faint);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lidar-control-close:hover {
+  color: var(--lidar-text);
+}
+
+/* Content */
+.lidar-control-content {
+  /* Grow to fill the panel; scroll vertically only when content overflows.
+     Flex column so the share section can be pushed to the bottom edge. The
+     side/bottom padding keeps the (possibly overlay) scrollbar clear of the
+     inner components. */
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px 0 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lidar-scrollbar) transparent;
+}
+
+/* Keep content sections at their natural height (no flex squish) so the panel
+   scrolls when content overflows instead of compressing the controls. */
+.lidar-control-content > * {
+  flex-shrink: 0;
+}
+
+.lidar-control-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lidar-control-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lidar-control-content::-webkit-scrollbar-thumb {
+  background-color: var(--lidar-scrollbar);
+  border-radius: 3px;
+}
+
+.lidar-control-content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--lidar-scrollbar-hover);
+}
+
+/* Sections */
+.lidar-control-section {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--lidar-border);
+}
+
+.lidar-control-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.lidar-control-section-header {
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--lidar-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+/* Form elements */
+.lidar-control-group {
+  margin-bottom: 10px;
+}
+
+.lidar-control-group:last-child {
+  margin-bottom: 0;
+}
+
+.lidar-control-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--lidar-text-secondary);
+}
+
+.lidar-control-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.lidar-control-value {
+  font-size: 11px;
+  color: var(--lidar-text-tertiary);
+  font-weight: 500;
+}
+
+.lidar-control-input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 12px;
+  border: 1px solid var(--lidar-border-input);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+  background: var(--lidar-bg);
+  color: var(--lidar-text);
+}
+
+.lidar-control-input:focus {
+  border-color: var(--lidar-accent);
+  box-shadow: 0 0 0 2px var(--lidar-accent-ring);
+}
+
+/* Sample-data dropdown (custom, so the menu themes correctly in dark mode) */
+.lidar-sample-dropdown {
+  position: relative;
+}
+
+.lidar-sample-trigger {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  text-align: left;
+  border: 1px solid var(--lidar-border-input);
+  border-radius: 4px;
+  background: var(--lidar-bg);
+  color: var(--lidar-text-muted);
+  cursor: pointer;
+  outline: none;
+}
+
+.lidar-sample-trigger:hover,
+.lidar-sample-trigger.open,
+.lidar-sample-trigger:focus-visible {
+  border-color: var(--lidar-accent);
+}
+
+.lidar-sample-trigger-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lidar-sample-caret {
+  flex: 0 0 auto;
+  font-size: 10px;
+}
+
+.lidar-sample-menu {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  box-sizing: border-box;
+  background: var(--lidar-bg);
+  border: 1px solid var(--lidar-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.lidar-sample-menu[hidden] {
+  display: none;
+}
+
+.lidar-sample-option {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  text-align: left;
+  border: none;
+  border-radius: 3px;
+  background: none;
+  color: var(--lidar-text);
+  cursor: pointer;
+}
+
+.lidar-sample-option:hover,
+.lidar-sample-option:focus-visible {
+  outline: none;
+  background: var(--lidar-hover);
+}
+
+.lidar-control-select {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 12px;
+  border: 1px solid var(--lidar-border-input);
+  border-radius: 4px;
+  outline: none;
+  background: var(--lidar-bg);
+  color: var(--lidar-text);
+  cursor: pointer;
+}
+
+.lidar-control-select:focus {
+  border-color: var(--lidar-accent);
+  box-shadow: 0 0 0 2px var(--lidar-accent-ring);
+}
+
+/* Slider */
+.lidar-control-slider {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--lidar-hover);
+  outline: none;
+  -webkit-appearance: none;
+  margin-top: 4px;
+}
+
+.lidar-control-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--lidar-accent);
+  cursor: pointer;
+  border: 2px solid var(--lidar-bg);
+  box-shadow: 0 1px 3px var(--lidar-shadow-modal);
+}
+
+.lidar-control-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--lidar-accent);
+  cursor: pointer;
+  border: 2px solid var(--lidar-bg);
+  box-shadow: 0 1px 3px var(--lidar-shadow-modal);
+}
+
+/* Button */
+.lidar-control-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--lidar-on-accent);
+  background: var(--lidar-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.lidar-control-button:hover {
+  background: var(--lidar-accent-hover);
+}
+
+.lidar-control-button:disabled {
+  background: var(--lidar-border-strong);
+  cursor: not-allowed;
+}
+
+.lidar-control-button.secondary {
+  background: var(--lidar-bg-subtle);
+  color: var(--lidar-text);
+}
+
+.lidar-control-button.secondary:hover {
+  background: var(--lidar-hover);
+}
+
+.lidar-share-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: var(--lidar-bg);
+  padding-top: 10px;
+  padding-bottom: 8px;
+  /* Pin to the bottom of the panel when content does not fill the height. The
+     solid background and full-height footer keep scrolled content from peeking
+     through beneath the sticky button. */
+  margin-top: auto;
+}
+
+.lidar-share-button {
+  width: 100%;
+}
+
+.lidar-share-status {
+  min-height: 16px;
+  color: var(--lidar-text-secondary);
+  font-size: 11px;
+  text-align: center;
+}
+
+/* File input styling */
+.lidar-file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+}
+
+.lidar-file-input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+.lidar-file-input-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: var(--lidar-bg-muted);
+  border: 2px dashed var(--lidar-border-dashed);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  color: var(--lidar-text-tertiary);
+  font-size: 12px;
+  text-align: center;
+}
+
+.lidar-file-input-label:hover,
+.lidar-file-input-label.drag-over {
+  border-color: var(--lidar-accent);
+  background: var(--lidar-accent-soft);
+}
+
+.lidar-file-input-label svg {
+  color: var(--lidar-text-faint);
+}
+
+/* Point cloud list */
+.lidar-pointclouds-section {
+  min-height: 40px;
+}
+
+.lidar-pointclouds-list {
+  max-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.lidar-pointclouds-empty {
+  color: var(--lidar-text-faint);
+  font-size: 11px;
+  font-style: italic;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.lidar-pointcloud-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background: var(--lidar-bg-muted);
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.lidar-pointcloud-item:last-child {
+  margin-bottom: 0;
+}
+
+.lidar-pointcloud-info {
+  flex: 1;
+  min-width: 0;
+  margin-right: 8px;
+}
+
+.lidar-pointcloud-name {
+  font-weight: 500;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lidar-pointcloud-details {
+  font-size: 10px;
+  color: var(--lidar-text-muted);
+  margin-top: 2px;
+}
+
+.lidar-pointcloud-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.lidar-control-panel .lidar-pointcloud-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  font-size: 10px;
+  background: var(--lidar-bg-subtle);
+  border: 1px solid var(--lidar-border-strong);
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--lidar-text);
+  font-weight: 500;
+  width: 64px;
+  height: auto;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.lidar-control-panel .lidar-pointcloud-action:hover {
+  background: var(--lidar-hover);
+  border-color: var(--lidar-border-hover);
+}
+
+.lidar-control-panel .lidar-pointcloud-action.remove {
+  background: var(--lidar-danger-bg);
+  color: var(--lidar-danger);
+  border-color: var(--lidar-danger);
+}
+
+.lidar-control-panel .lidar-pointcloud-action.remove:hover {
+  background: var(--lidar-danger);
+  color: var(--lidar-danger-on);
+}
+
+/* Loading state */
+.lidar-loading {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  color: var(--lidar-text-tertiary);
+  font-size: 12px;
+  background: var(--lidar-overlay);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  border-radius: 4px;
+}
+
+.lidar-loading.active {
+  display: flex;
+}
+
+.lidar-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--lidar-hover);
+  border-top-color: var(--lidar-accent);
+  border-radius: 50%;
+  animation: lidar-spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+.lidar-loading-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--lidar-text);
+  margin-bottom: 8px;
+}
+
+.lidar-loading-progress {
+  font-size: 11px;
+  color: var(--lidar-text-tertiary);
+}
+
+.lidar-loading-bar {
+  width: 200px;
+  height: 4px;
+  background: var(--lidar-hover);
+  border-radius: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.lidar-loading-bar-fill {
+  height: 100%;
+  background: var(--lidar-accent);
+  border-radius: 2px;
+  transition: width 0.2s ease;
+  width: 0%;
+}
+
+@keyframes lidar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error state */
+.lidar-error {
+  padding: 8px;
+  background: var(--lidar-error-bg);
+  border: 1px solid var(--lidar-error-border);
+  border-radius: 4px;
+  color: var(--lidar-error-text);
+  font-size: 11px;
+  margin-top: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+/* Flex utilities */
+.lidar-control-flex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.lidar-control-flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Scrollbar styling for pointclouds list */
+.lidar-pointclouds-list {
+  scrollbar-width: thin;
+  scrollbar-color: var(--lidar-scrollbar) transparent;
+}
+
+.lidar-pointclouds-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lidar-pointclouds-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lidar-pointclouds-list::-webkit-scrollbar-thumb {
+  background-color: var(--lidar-scrollbar);
+  border-radius: 3px;
+}
+
+/* Classification Legend */
+.lidar-classification-legend {
+  margin-top: 8px;
+  border: 1px solid var(--lidar-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lidar-classification-legend-header {
+  display: flex;
+  gap: 8px;
+  padding: 6px 8px;
+  background: var(--lidar-bg-muted);
+  border-bottom: 1px solid var(--lidar-border);
+}
+
+.lidar-legend-action-btn {
+  flex: 1;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 500;
+  background-color: var(--lidar-accent);
+  border: 1px solid var(--lidar-accent-border);
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--lidar-on-accent);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.lidar-control-panel .lidar-legend-action-btn {
+  background-color: var(--lidar-accent);
+  border: 1px solid var(--lidar-accent-border);
+  color: var(--lidar-on-accent);
+}
+
+.lidar-legend-action-btn:hover,
+.lidar-legend-action-btn:focus-visible {
+  background-color: var(--lidar-accent-dark);
+  border-color: var(--lidar-accent-darker);
+  color: var(--lidar-on-accent);
+}
+
+.lidar-control-panel .lidar-classification-legend-header button.lidar-legend-action-btn:hover,
+.lidar-control-panel .lidar-classification-legend-header button.lidar-legend-action-btn:focus-visible {
+  background-color: var(--lidar-accent-dark);
+  border-color: var(--lidar-accent-darker);
+  color: var(--lidar-on-accent);
+}
+
+.lidar-classification-legend-list {
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 4px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lidar-scrollbar) transparent;
+}
+
+.lidar-classification-legend-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lidar-classification-legend-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lidar-classification-legend-list::-webkit-scrollbar-thumb {
+  background-color: var(--lidar-scrollbar);
+  border-radius: 3px;
+}
+
+.lidar-classification-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.lidar-classification-legend-item:hover {
+  background: var(--lidar-bg-muted);
+}
+
+.lidar-classification-legend-item input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.lidar-classification-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid var(--lidar-border-subtle);
+  flex-shrink: 0;
+}
+
+.lidar-classification-label {
+  font-size: 11px;
+  color: var(--lidar-text);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lidar-classification-empty {
+  padding: 12px 8px;
+  text-align: center;
+  color: var(--lidar-text-muted);
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* Colormap Selector */
+.lidar-colormap-group {
+  margin-bottom: 10px;
+}
+
+.lidar-colormap-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lidar-colormap-select {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 12px;
+  border: 1px solid var(--lidar-border-input);
+  border-radius: 4px;
+  outline: none;
+  background: var(--lidar-bg);
+  color: var(--lidar-text);
+  cursor: pointer;
+}
+
+.lidar-colormap-select:focus {
+  border-color: var(--lidar-accent);
+  box-shadow: 0 0 0 2px var(--lidar-accent-ring);
+}
+
+.lidar-colormap-preview {
+  width: 50px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid var(--lidar-border-subtle);
+  flex-shrink: 0;
+}
+
+/* Colorbar Legend */
+.lidar-colorbar {
+  margin: 8px 0;
+}
+
+.lidar-colorbar-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--lidar-text-secondary);
+  margin-bottom: 4px;
+}
+
+.lidar-colorbar-gradient {
+  width: 100%;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid var(--lidar-border-subtle);
+  display: block;
+}
+
+.lidar-colorbar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--lidar-text-tertiary);
+  margin-top: 2px;
+}
+
+.lidar-colorbar-min,
+.lidar-colorbar-max {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+}
+
+/* Color Range Control */
+.lidar-color-range {
+  margin: 8px 0;
+}
+
+.lidar-color-range-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.lidar-range-reset-btn {
+  padding: 2px 8px;
+  font-size: 10px;
+  background: var(--lidar-bg-subtle);
+  border: 1px solid var(--lidar-border-strong);
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--lidar-text-secondary);
+}
+
+.lidar-range-reset-btn:hover {
+  background: var(--lidar-hover);
+  border-color: var(--lidar-text-faint);
+}
+
+.lidar-range-reset-btn:active {
+  background: var(--lidar-active);
+}
+
+.lidar-range-mode {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.lidar-range-mode label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--lidar-text-secondary);
+}
+
+.lidar-range-mode input[type="radio"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Info button for point cloud items */
+.lidar-control-panel .lidar-pointcloud-action.info {
+  background: var(--lidar-info-bg);
+  color: var(--lidar-info-text);
+  border-color: var(--lidar-info-border);
+}
+
+.lidar-control-panel .lidar-pointcloud-action.info:hover {
+  background: var(--lidar-info-text);
+  color: var(--lidar-on-accent);
+}
+
+/* ==================== Metadata Panel ==================== */
+.lidar-metadata-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--lidar-backdrop);
+  z-index: 10000;
+}
+
+.lidar-metadata-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--lidar-bg);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px var(--lidar-shadow-modal);
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: hidden;
+  z-index: 10001;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  color: var(--lidar-text);
+}
+
+.lidar-metadata-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--lidar-border);
+  background: var(--lidar-bg-muted);
+}
+
+.lidar-metadata-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lidar-text);
+}
+
+.lidar-metadata-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--lidar-text-faint);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.lidar-metadata-close:hover {
+  background: var(--lidar-hover);
+  color: var(--lidar-text);
+}
+
+.lidar-metadata-content {
+  padding: 16px 20px;
+  max-height: calc(80vh - 65px);
+  overflow-y: auto;
+}
+
+.lidar-metadata-section {
+  margin-bottom: 12px;
+  border: 1px solid var(--lidar-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lidar-metadata-section:last-child {
+  margin-bottom: 0;
+}
+
+.lidar-metadata-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--lidar-bg-muted);
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--lidar-text-secondary);
+}
+
+.lidar-metadata-section-header:hover {
+  background: var(--lidar-bg-subtle);
+}
+
+.lidar-metadata-section-toggle {
+  font-size: 10px;
+  color: var(--lidar-text-muted);
+}
+
+.lidar-metadata-section-title {
+  flex: 1;
+}
+
+.lidar-metadata-section-body {
+  padding: 12px;
+  border-top: 1px solid var(--lidar-border);
+}
+
+.lidar-metadata-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 12px;
+}
+
+.lidar-metadata-label {
+  color: var(--lidar-text-tertiary);
+  font-weight: 500;
+}
+
+.lidar-metadata-value {
+  color: var(--lidar-text);
+  text-align: right;
+  max-width: 60%;
+  word-break: break-all;
+}
+
+.lidar-metadata-subheader {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lidar-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 12px 0 6px 0;
+  padding-top: 8px;
+  border-top: 1px dashed var(--lidar-border);
+}
+
+.lidar-metadata-subheader:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.lidar-metadata-wkt {
+  margin-top: 8px;
+}
+
+.lidar-metadata-copy-btn {
+  display: block;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--lidar-accent);
+  color: var(--lidar-on-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lidar-metadata-copy-btn:hover {
+  background: var(--lidar-accent-hover);
+}
+
+.lidar-metadata-code {
+  background: var(--lidar-bg-code);
+  border: 1px solid var(--lidar-border);
+  border-radius: 4px;
+  padding: 10px;
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 10px;
+  max-height: 200px;
+  overflow: auto;
+  white-space: pre;
+  margin: 0;
+  color: var(--lidar-text);
+}
+
+.lidar-metadata-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.lidar-metadata-table th,
+.lidar-metadata-table td {
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--lidar-border);
+}
+
+.lidar-metadata-table th {
+  background: var(--lidar-bg-muted);
+  font-weight: 600;
+  color: var(--lidar-text-secondary);
+}
+
+.lidar-metadata-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==================== Cross-Section Panel ==================== */
+.lidar-crosssection-section {
+  margin-top: 8px;
+}
+
+.lidar-section-collapsible {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lidar-section-toggle {
+  font-size: 10px;
+  color: var(--lidar-text-muted);
+  width: 12px;
+}
+
+.lidar-section-body {
+  padding: 8px 0;
+}
+
+.lidar-crosssection-panel {
+  padding: 8px 0;
+}
+
+.lidar-crosssection-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--lidar-text-secondary);
+  margin-bottom: 8px;
+  display: none; /* Hide since section header already shows title */
+}
+
+.lidar-crosssection-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.lidar-crosssection-draw,
+.lidar-crosssection-clear {
+  flex: 1;
+  padding: 6px 12px;
+  font-size: 11px;
+}
+
+.lidar-crosssection-draw.active {
+  background: var(--lidar-info-bg);
+  color: var(--lidar-info-text);
+  border: 1px solid var(--lidar-info-border);
+}
+
+.lidar-crosssection-chart {
+  border: 1px solid var(--lidar-border);
+  border-radius: 4px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.lidar-profile-chart-container {
+  position: relative;
+  background: var(--lidar-bg);
+}
+
+.lidar-profile-chart {
+  display: block;
+}
+
+.lidar-profile-tooltip {
+  position: absolute;
+  background: var(--lidar-tooltip-bg);
+  color: var(--lidar-tooltip-text);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  pointer-events: none;
+  z-index: 100;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.lidar-crosssection-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  padding: 8px;
+  background: var(--lidar-bg-muted);
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.lidar-crosssection-stat {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lidar-crosssection-stat-label {
+  color: var(--lidar-text-tertiary);
+}
+
+.lidar-crosssection-stat-value {
+  font-weight: 500;
+  color: var(--lidar-text);
+}
+
+/* ==================== Chart Popup ==================== */
+.lidar-chart-popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--lidar-backdrop);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lidar-chart-popup {
+  position: relative;
+  background: var(--lidar-bg);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px var(--lidar-shadow-modal);
+  width: 750px;
+  height: 520px;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--lidar-text);
+}
+
+.lidar-chart-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--lidar-border);
+  background: var(--lidar-bg-muted);
+  border-radius: 8px 8px 0 0;
+  flex-shrink: 0;
+}
+
+.lidar-chart-popup-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lidar-text);
+}
+
+.lidar-chart-popup-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--lidar-text-faint);
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.lidar-chart-popup-close:hover {
+  background: var(--lidar-hover);
+  color: var(--lidar-text);
+}
+
+.lidar-chart-popup-content {
+  flex: 1;
+  padding: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lidar-chart-popup-stats {
+  display: flex;
+  gap: 24px;
+  padding: 12px 16px;
+  background: var(--lidar-bg-muted);
+  border-top: 1px solid var(--lidar-border);
+  font-size: 13px;
+  color: var(--lidar-text-secondary);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.lidar-chart-popup-stats span {
+  white-space: nowrap;
+}
+
+.lidar-chart-popup-resize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, var(--lidar-resize-grip) 50%, var(--lidar-resize-grip) 60%, transparent 60%, transparent 70%, var(--lidar-resize-grip) 70%, var(--lidar-resize-grip) 80%, transparent 80%);
+  border-radius: 0 0 8px 0;
+}
+
+.lidar-chart-popup-resize:hover {
+  background: linear-gradient(135deg, transparent 50%, var(--lidar-resize-grip-hover) 50%, var(--lidar-resize-grip-hover) 60%, transparent 60%, transparent 70%, var(--lidar-resize-grip-hover) 70%, var(--lidar-resize-grip-hover) 80%, transparent 80%);
+}
+/*$vite$:1*/
+
+.lidar-control-panel {
+  overflow: hidden;
+}
+
+/* The default drop zone is quite tall; trim its padding (and the icon) so the
+   upload box does not dominate the top of the panel. */
+.lidar-control-panel .lidar-file-input-label {
+  padding: 10px 12px;
+  min-height: 0;
+  gap: 4px;
+}
+
+.lidar-control-panel .lidar-file-input-label svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lidar-control-panel .lidar-control-content {
+  max-height: inherit;
+  padding-bottom: 16px;
+  padding-right: 10px;
+  scroll-padding-bottom: 16px;
+  scrollbar-gutter: stable;
+}
+
+.lidar-control-panel .lidar-share-section {
+  position: static;
+}
+
+.lidar-control-panel .lidar-control-select,
+.lidar-control-panel .lidar-colormap-select {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  height: 30px;
+  min-height: 0;
+  padding: 0 28px 0 8px;
+  line-height: 28px;
+  background-color: hsl(var(--background));
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  color: hsl(var(--foreground));
+}
+
+.lidar-control-panel .lidar-control-select option,
+.lidar-control-panel .lidar-colormap-select option {
+  background-color: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+}
+
+.lidar-control-panel .lidar-control-select.is-proxied,
+.lidar-control-panel .lidar-colormap-select.is-proxied {
+  display: none;
+}
+
+.lidar-control-panel .lidar-select-proxy {
+  align-items: center;
+  background-color: hsl(var(--background));
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  border: 1px solid hsl(var(--input));
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 12px;
+  height: 30px;
+  justify-content: flex-start;
+  line-height: 28px;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 28px 0 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.lidar-control-panel .lidar-control-select.is-proxied + .lidar-select-proxy {
+  width: 100%;
+}
+
+.lidar-control-panel .lidar-colormap-select.is-proxied + .lidar-select-proxy {
+  min-width: 104px;
+}
+
+.lidar-control-panel .lidar-select-proxy:focus-visible,
+.lidar-control-panel .lidar-select-proxy.is-open {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.25);
+  outline: none;
+}
+
+.lidar-select-menu {
+  background: hsl(var(--popover));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0;
+  box-shadow: var(--shadow-md);
+  box-sizing: border-box;
+  color: hsl(var(--popover-foreground));
+  font-family: var(--font-sans);
+  font-size: 12px;
+  list-style: none;
+  margin: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 0;
+  position: fixed;
+  z-index: 10000;
+}
+
+.lidar-select-menu button {
+  background: hsl(var(--popover));
+  border: 0;
+  box-sizing: border-box;
+  color: hsl(var(--popover-foreground));
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 8px;
+  text-align: left;
+  width: 100%;
+}
+
+.lidar-select-menu button:hover,
+.lidar-select-menu button.is-active {
+  background: hsl(var(--accent));
+}
+
+.lidar-select-menu button.is-selected {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.lidar-control-panel input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-grid;
+  place-content: center;
+  width: 13px;
+  height: 13px;
+  min-width: 13px;
+  min-height: 13px;
+  margin: 0 6px 0 0;
+  flex: 0 0 13px;
+  border: 1px solid hsl(var(--input));
+  border-radius: 2px;
+  background: hsl(var(--background));
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.lidar-control-panel input[type="checkbox"]::before {
+  width: 7px;
+  height: 5px;
+  content: "";
+  transform: scale(0);
+  transform-origin: center;
+  background: hsl(var(--primary-foreground));
+  clip-path: polygon(14% 44%, 0 58%, 39% 100%, 100% 15%, 86% 0, 37% 67%);
+}
+
+.lidar-control-panel input[type="checkbox"]:checked {
+  border-color: hsl(var(--primary));
+  background: hsl(var(--primary));
+}
+
+.lidar-control-panel input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.lidar-control-panel input[type="checkbox"]:focus-visible {
+  outline: 2px solid hsl(var(--ring) / 0.5);
+  outline-offset: 1px;
+}
+
+.lidar-control-panel .lidar-classification-legend-item input[type="checkbox"] {
+  margin: 0;
+}
+</style><style id="maplibre-gl-swipe-style-fixes">
+.swipe-control-panel .swipe-control-select {
+  color: #111827;
+  color-scheme: light;
+}
+
+.swipe-control-panel .swipe-control-select option {
+  background-color: #fff;
+  color: #111827;
+  color-scheme: light;
+}
+
+.swipe-control-panel .swipe-control-select.is-proxied {
+  display: none;
+}
+
+.swipe-control-panel .swipe-select-proxy {
+  align-items: center;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%231f2933' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #111827;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 12px;
+  height: 28px;
+  justify-content: flex-start;
+  line-height: 26px;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 28px 0 8px;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.swipe-control-panel .swipe-select-proxy:focus-visible,
+.swipe-control-panel .swipe-select-proxy.is-open {
+  border-color: #4a90d9;
+  box-shadow: 0 0 0 2px rgba(74, 144, 217, 0.15);
+  outline: none;
+}
+
+.swipe-select-menu {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+  box-sizing: border-box;
+  color: #111827;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 0;
+  position: fixed;
+  z-index: 10000;
+}
+
+.swipe-select-menu button {
+  background: #fff;
+  border: 0;
+  box-sizing: border-box;
+  color: #111827;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 8px;
+  text-align: left;
+  width: 100%;
+}
+
+.swipe-select-menu button:hover,
+.swipe-select-menu button.is-active {
+  background: #f3f4f6;
+}
+
+.swipe-select-menu button.is-selected {
+  background: #4a90d9;
+  color: #fff;
+}
+
+.swipe-control-panel .swipe-layer-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 2px;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 14px;
+  justify-content: center;
+  margin: 0;
+  width: 14px;
+}
+
+.swipe-control-panel .swipe-layer-item input[type="checkbox"]:hover {
+  border-color: #4a90d9;
+}
+
+.swipe-control-panel .swipe-layer-item input[type="checkbox"]:focus-visible {
+  box-shadow: 0 0 0 2px rgba(74, 144, 217, 0.18);
+  outline: none;
+}
+
+.swipe-control-panel .swipe-layer-item input[type="checkbox"]:checked {
+  background-color: #4a90d9;
+  border-color: #4a90d9;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M2 5 4 7 8 3' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+}
+
+/* Dark theme: retarget the light literals above onto the app's design tokens.
+   The menu is appended to <body>, so it is matched by .dark on <html>. */
+.dark .swipe-control-panel .swipe-control-select {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  color-scheme: dark;
+}
+
+.dark .swipe-control-panel .swipe-control-select option {
+  background-color: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+  color-scheme: dark;
+}
+
+.dark .swipe-control-panel .swipe-select-proxy {
+  background-color: hsl(var(--background));
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' stroke='%23cbd5e1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.dark .swipe-select-menu {
+  background: hsl(var(--popover));
+  border-color: hsl(var(--border));
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.45);
+  color: hsl(var(--popover-foreground));
+}
+
+.dark .swipe-select-menu button {
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+}
+
+.dark .swipe-select-menu button:hover,
+.dark .swipe-select-menu button.is-active {
+  background: hsl(var(--accent));
+}
+
+.dark .swipe-select-menu button.is-selected {
+  background: #4a90d9;
+  color: #fff;
+}
+
+.dark .swipe-control-panel .swipe-layer-item input[type="checkbox"]:not(:checked) {
+  background-color: hsl(var(--background));
+  border-color: hsl(var(--input));
+}
+</style><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/App-sjOXNPzQ.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/marker-shape-mnzuxTqj.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/esm-erD17y-U.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/polyline-BlOv6z6F.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/src-2jr1FHfV.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/robust-predicates-BYcOpuaD.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/geotiff-9KcLm9Y6.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/globals-DaTd1N6o.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/__vite-browser-external-BSK91P65.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/s2js.esm-u31gbaQG.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/a5-DbjGHmTj.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/geolibre_wasm-D18SrvaL.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/src-Co6HNhXJ.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/label-number-format-NE2Oh4ML.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/tile-request-headers-DWDvwhkg.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/kerchunk-reference-store-vUpbbVtQ.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/browser-CLMCN1v5.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/cog-jpeg-tables-DZnE2asG.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/three-d-tiles-BseJe8OA.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/index.es-CKagMC_r.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/map-capture-Fyvliw1V.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-layer-control-DM1ZikWS.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/arcgis-control-adapters-e-jDmgK-.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/lib-ComLMp_E.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/arcgis-sdk-DVRkUobG.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/XMLParser-DBCF4bZ9.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/epsg-proj4-CYTlop7S.js"><link rel="stylesheet" crossorigin="" href="http://localhost:8904/geo/app/assets/src-Boqm8U0u.css"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/route-Dp9b7PVW.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/postgis-tiles-9N4vn5TA.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/tauri-io-qyUcqoV3.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-js-DGWJjTNR.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/crs-utils-DuWEsrM4.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/photo-file-names-Cfm_sRXb.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/sidecar-CX5fkFi9.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/saved-mssql-connections-CG3A2pfK.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/saved-postgres-connections-D_YmzJCk.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/gpkg-ogr-contents-CxF6VBHw.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/SettingsDialog-C3Mmubi5.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/braces-Dbr_LnE_.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/circle-check-CFjtauLZ.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/crosshair-Bkc2i4PS.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/download-CWf7B7I8.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/external-link-9YMw_aOR.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/share-gallery-9hn3uufh.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/folder-open-CJW1f5yC.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/link-2-C49gUGi4.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/loader-circle-DFH_cmfh.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/log-out-CJcE5ETX.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/palette-D2ThGhc4.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/panel-left-DI3J_qR-.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/panel-right-BU4b0zVM.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/plus-BKwi-SG-.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/refresh-cw-DLsNQscX.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/search-CiuddL-p.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/terminal-B3Sft39b.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/trash-C2SXJE0n.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/triangle-alert-DKxHn1dv.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/upload-CWO6ooyt.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/plugin-display-name-sNPAz8Wu.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/useTranslation-CQTPHFv0.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/src-BqtyvYlC.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/messages-DKS8rHCG.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-DcBACNu3.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/probe-log-BFMlxtxp.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/webgl-device-BOC2NQkv.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/array-utils-flat-Cc79vVqO.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/get-attribute-from-layouts-DLctWLZh.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/expression-B3ACspJk.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/buffer-transform-2uYtn3mU.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/quaternion-B-ffkT8Z.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/webgpu-B0mDW_g9.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-C5dW8qQh.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/earcut-C3jYYYFK.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-graticule-vC03wpwu.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-basemap-control-CjiglGG5.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-raster-Siroxqn0.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/stac-signing-dMIn22tg.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/raster-layer-sync-DN_tegOo.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/panel-focus-DcDtTqlq.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/local-netcdf-BRHd1sIf.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-overture-maps-BJfwV7oM.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-vector-B3_IonwS.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-vector-CqZqXrwa.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-enviroatlas-CyNl8VXy.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-esri-wayback-BgBgPXTg.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-fema-wms-DAv6xUqR.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/map-popup-CcJAUIE-.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-nasa-earthdata-zn4rs0Pp.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/esm-DEx5HrAx.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-national-map-cYFLrCVb.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-streetview-BfciFCUC.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-swipe-YolVXQB_.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/h3-js.es-CBCwOu9q.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-time-slider-Bs_X6MB-.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/open-external-DjiLhBAp.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-js-CIGLcCZ4.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/ui-profile-CM29xs4H.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/startup-layers-C7PzubQ4.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/layer-refresh-H0kM_cBn.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/xml-decode-D_TfY65Q.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/sql-query-layer-qUEr_auc.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/iceberg-Qzsb9HKq.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/duckdb-geometry-CvtgsYun.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/geometry-wkb-BhVtd6s4.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/project-credentials-DwqUXTbs.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dms-J254pW-i.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/CrsPickerInput-LGDmUSTj.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/earth-BC_tgIbK.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/useColormapRamps-BhMZCeMW.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/netcdf-cube-Aj8Xm2ni.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/chevron-left-8fKVeuH7.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/chevron-up-D7lIh5vy.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/circle-alert-pxUyNsm1.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/circle-arrow-up-CPmcZD1Q.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/grid-reference-BEMNGINk.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/copy-DZFN4svm.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/crop-CYZI4-mg.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/sql-workspace-prefill-DKlKhrY4.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/database-DSeHJFBh.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/classification-helpers-AjO3y9EY.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/eraser-B30q-cFZ.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/file-code-corner-DFEWb7em.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/image-plus-DmoQONgb.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/file-up-y4IZHFJc.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/ExpressionBuilderDialog-zr9pgxsI.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/grip-vertical-BJSzjPD1.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/shuffle-t48YHznH.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/info-XW1Y00jC.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/share-2-cK9BNLjo.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/layers-CkgXkzHE.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/chart-view-BYNUfSxF.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/layout-grid-DROla3i4.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/gps-tracking-BrDOGg97.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/map-pin-mtAFPlqv.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/map-CjZOItqg.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maximize-Bd9yMf8a.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/panel-right-close-CoDn8KZa.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/jupyter-CPtAZvAO.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/pencil-BLcpZPMH.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/play-BfRi14-b.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/save-AXBAgMUi.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/raster-subset-kind-BQd6IEx8.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/whitebox-menu-catalog-CyirAt_6.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/url-utils-Buywizyp.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/wrench-p-07ZLRi.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/shapes-D-ETnKcG.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/sparkles-DnqVAOXc.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/user-D2vspDPj.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/users-D3oqY9n1.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/video-BeCthetO.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/radix-compat-DE-RP8ev.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/usePlugins-DGO99i2P.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/helpers-DmSqR5A7.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/wms-geographic-C2xKgsln.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/useFileNamePrompt-Bcw86V7u.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/tile-retry-DUXhLf41.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/native-http-HSIsded2.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/xyz-url-DgQIDWOq.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/wms-projected-CIZLJ7S5.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dompurify-XldrntBi.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/style-import-D2ge6xbV.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/spaceborne-lidar-handoff-Pr9PlO6c.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/ogc-api-features-BcIYR4mF.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/commands-DIazOiC6.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/RegionalBasemapSection-Cfsy_cQb.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/useBeforeUnloadGuard-a2uLP1iy.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/scriptingApi-MZyLyZbU.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/binary-output-CVM0TAsG.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/processing-history-CCG6_LDr.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/whitebox-param-kind-D2uj41zm.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/whitebox-layer-inputs-BvOkCGmf.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/model-tool-catalog-Dq3OVSm-.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/processing-tool-i18n-DrY8jkqp.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/whitebox-field-params-DPwKMl5K.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/clamp-B0j_SOIE.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/vector-export-F9X9lnMD.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/vector-exporter-CXtzYz68.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/vector-export-errors-D62I4O8d.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/along-track-profile-Cf6PEDlL.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/raster-export-f-GV-O_H.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/error-boundaries-CFks069C.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/updates-DDoY3QQr.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/selection-actions-COmZbkIr.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/parquet-kv-metadata-CGDUrWhA.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/field-collection-DWME8cQ3.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/print-layout-DFiocjFe.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/storymap-text-Cv0gjEvY.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/esm-CQbU_V8B.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/panel-resize-Dsh-zi8j.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/shared-D0yM1fsC.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/UpdateInstructions-B4dtZeVU.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/usePlugins-Dq2Fwv3q.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/error-boundaries-BWItfYI9.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/credential-hydration-Bb85GYLn.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/maplibre-gl-Ctsi8GH1.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/index.esm-B1aTXkuq.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/ieee754-CGLXtx3l.js"><style id="geolibre-effects-maplibre-overlays">
+      .geolibre-effects-map .maplibregl-boxzoom,
+      .geolibre-effects-map .mapboxgl-boxzoom {
+        z-index: 6;
+      }
+      .geolibre-effects-map .maplibregl-marker,
+      .geolibre-effects-map .mapboxgl-marker {
+        z-index: 5;
+      }
+      .geolibre-effects-map .maplibre-gl-lidar-canvas {
+        z-index: 4;
+      }
+    </style><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-4N2ZCK-0.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-2kD_7R6a.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-Dvk_G2pW.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-BE3hpjwZ.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-DkhkFP_Z.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-UQFhYl1Z.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/matrix3-DGXho8NZ.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-Cbrm9jER.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-vIUn0eMm.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-d1Mx2zb3.js"><link rel="modulepreload" as="script" crossorigin="" href="http://localhost:8904/geo/app/assets/dist-YVLp0Fd-.js"></head>
+  <body>
+    <div id="root"><div data-testid="desktop-shell" class="relative flex h-full min-w-0 flex-col overflow-hidden bg-background" style="--layer-panel-width: 320px; --style-panel-width: 320px; --notebook-panel-width: 480px;"><header class="flex min-h-11 min-w-0 shrink-0 flex-nowrap items-center gap-1 overflow-x-auto border-b bg-card py-1 px-1.5"><span class="me-1 flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary md:me-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map h-4 w-4" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"></path><path d="M15 5.764v15"></path><path d="M9 3.236v15"></path></svg></span><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 w-8 shrink-0" aria-label="View" type="button" id="radix-_r_0_" aria-haspopup="menu" aria-expanded="false" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye h-3.5 w-3.5" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></button><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 w-8 shrink-0" aria-label="Controls" type="button" id="radix-_r_5_" aria-haspopup="menu" aria-expanded="false" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders-horizontal h-3.5 w-3.5" aria-hidden="true"><path d="M10 5H3"></path><path d="M12 19H3"></path><path d="M14 3v4"></path><path d="M16 17v4"></path><path d="M21 12h-9"></path><path d="M21 19h-5"></path><path d="M21 5h-7"></path><path d="M8 10v4"></path><path d="M8 12H3"></path></svg></button><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 w-8 shrink-0" aria-label="Help" type="button" id="radix-_r_d_" aria-haspopup="menu" aria-expanded="false" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-question-mark lucide-help-circle lucide-circle-help h-3.5 w-3.5" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg></button><div class="ms-auto flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground"><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-7 w-7 shrink-0" aria-label="Switch to dark mode" title="Switch to dark mode"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-3.5 w-3.5" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg></button></div></header><div data-workspace-row="" class="relative flex min-h-0 flex-1 flex-col md:flex-row"><aside class="w-72 shrink-0 overflow-y-auto border-e bg-card p-3"><h2 class="mb-3 flex items-center gap-2 text-sm font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers lucide-layers-3 h-4 w-4" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>Layers</h2><div class="space-y-1"><label class="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-muted focus-within:outline-none focus-within:ring-2 focus-within:ring-ring" style="margin-inline-start: 0rem;"><input class="sr-only" type="checkbox" checked=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye h-4 w-4 text-primary" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg><span class="truncate">CLIMATESHIFT-1 hemp trial records</span></label></div></aside><div data-map-column="" class="flex min-w-0 flex-1 flex-col min-h-0"><main class="relative isolate min-w-0 flex-1 overflow-hidden min-h-0"><h1 class="sr-only">GeoLibre map workspace</h1><div class="contents"><svg aria-hidden="true" focusable="false" width="0" height="0" class="absolute h-0 w-0"><defs><filter id="geolibre-cvd-protanopia" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.152286 1.052583 -0.204868 0 0 0.114503 0.786281 0.099216 0 0 -0.003882 -0.048116 1.051998 0 0 0 0 0 1 0"></feColorMatrix></filter><filter id="geolibre-cvd-deuteranopia" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.367322 0.860646 -0.227968 0 0 0.280085 0.672501 0.047413 0 0 -0.01182 0.04294 0.968881 0 0 0 0 0 1 0"></feColorMatrix></filter><filter id="geolibre-cvd-tritanopia" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="1.255528 -0.076749 -0.178779 0 0 -0.078411 0.930809 0.147602 0 0 0.004733 0.691367 0.3039 0 0 0 0 0 1 0"></feColorMatrix></filter><filter id="geolibre-cvd-achromatopsia" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0"></feColorMatrix></filter></defs></svg><div class="h-full w-full"><div class="h-full w-full maplibregl-map geolibre-effects-map" data-testid="map-canvas"><div class="maplibregl-canvas-container maplibregl-interactive maplibregl-touch-drag-pan maplibregl-touch-zoom-rotate"><canvas class="maplibregl-canvas" tabindex="0" aria-label="Map" role="region" width="1112" height="841" style="width: 1112px; height: 841px; z-index: 4;"></canvas><canvas class="geolibre-effects-canvas" data-effects-layer="space" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 0; width: 1112px; height: 841px;" width="1112" height="841"></canvas><canvas class="geolibre-effects-canvas" data-effects-layer="stars" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 1; width: 1112px; height: 841px;" width="1112" height="841"></canvas><canvas class="geolibre-effects-canvas" data-effects-layer="comets" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 2; width: 1112px; height: 841px;" width="1112" height="841"></canvas><canvas class="geolibre-effects-canvas" data-effects-layer="halo" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3; width: 1112px; height: 841px;" width="1112" height="841"></canvas></div><div class="maplibregl-control-container" style="z-index: 5;"><div class="maplibregl-ctrl-top-left "></div><div class="maplibregl-ctrl-top-right "><div class="maplibregl-ctrl maplibregl-ctrl-group"><button class="maplibregl-ctrl-fullscreen" type="button" aria-label="Enter fullscreen" title="Enter fullscreen"><span class="maplibregl-ctrl-icon" aria-hidden="true"></span></button></div><div class="maplibregl-ctrl maplibregl-ctrl-group geolibre-reset-bearing-ctrl"><button type="button" class="geolibre-reset-bearing-button" title="Reset pitch &amp; bearing" aria-label="Reset pitch &amp; bearing" disabled=""><svg viewBox="0 0 24 24" aria-hidden="true" class="geolibre-reset-bearing-needle" style="transform: rotate(0deg);"><text class="geolibre-reset-bearing-needle-label" x="12" y="8" text-anchor="middle">N</text><polygon class="geolibre-reset-bearing-needle-north" points="12,9 9,19 12,16 15,19"></polygon><polygon class="geolibre-reset-bearing-needle-south" points="12,22.5 9.6,19 14.4,19"></polygon></svg></button></div><div class="maplibregl-ctrl maplibregl-ctrl-group"><button class="maplibregl-ctrl-globe-enabled" type="button" title="Disable globe"><span class="maplibregl-ctrl-icon" aria-hidden="true"></span></button></div><div class="maplibregl-ctrl maplibregl-ctrl-group maplibregl-ctrl-layer-control"><button type="button" title="Layer Control" aria-label="Layer Control"><span class="layer-control-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 3 8.25 12 13.5 21 8.25 12 3"></polygon><polyline points="3 12.75 12 18 21 12.75"></polyline><polyline points="3 17.25 12 22 21 17.25"></polyline></svg></span></button></div></div><div class="maplibregl-ctrl-bottom-left "><div class="maplibregl-ctrl maplibregl-ctrl-scale" style="width: 65.4999px;">500 km</div></div><div class="maplibregl-ctrl-bottom-right "><details class="maplibregl-ctrl maplibregl-ctrl-attrib maplibregl-attrib-empty"><summary class="maplibregl-ctrl-attrib-button" title="Toggle attribution" aria-label="Toggle attribution"></summary><div class="maplibregl-ctrl-attrib-inner"></div></details></div></div><div class="layer-control-panel" style="width: 340px;"><div class="layer-control-panel-header"><span class="layer-control-panel-title">Layers</span></div><div class="layer-control-actions"><button type="button" class="layer-control-action-btn" title="Show all layers">Show All</button><button type="button" class="layer-control-action-btn" title="Hide all layers">Hide All</button></div><div class="layer-control-resize-handle layer-control-resize-handle-left" title="Drag to resize panel" role="separator" aria-orientation="vertical"></div><div class="layer-control-resize-handle layer-control-resize-handle-right" title="Drag to resize panel" role="separator" aria-orientation="vertical"></div><div class="layer-control-item" data-layer-id="climateshift-1-hemp-records"><div class="layer-control-row"><div class="layer-control-drag-handle" title="Drag to reorder"><svg viewBox="0 0 16 16" fill="currentColor">
+      <circle cx="5" cy="3" r="1.5"></circle>
+      <circle cx="11" cy="3" r="1.5"></circle>
+      <circle cx="5" cy="8" r="1.5"></circle>
+      <circle cx="11" cy="8" r="1.5"></circle>
+      <circle cx="5" cy="13" r="1.5"></circle>
+      <circle cx="11" cy="13" r="1.5"></circle>
+    </svg></div><input type="checkbox" class="layer-control-checkbox"><span class="layer-control-symbol" title="Layer type: circle"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="8" cy="8" r="5" fill="#4a90d9" stroke="#00438c" stroke-width="1"></circle>
+  </svg></span><span class="layer-control-name" title="CLIMATESHIFT-1 hemp trial records">CLIMATESHIFT-1 hemp trial records</span><input type="range" class="layer-control-opacity" min="0" max="1" step="0.01" title="Opacity: 100%"><button class="layer-control-style-button" title="Layer info (style editing not available)" aria-label="Layer info for climateshift-1-hemp-records">⚙</button></div></div><div class="layer-control-item" data-layer-id="Background"><div class="layer-control-row"><div class="layer-control-drag-handle layer-control-drag-handle-disabled"><svg viewBox="0 0 16 16" fill="currentColor">
+      <circle cx="5" cy="3" r="1.5"></circle>
+      <circle cx="11" cy="3" r="1.5"></circle>
+      <circle cx="5" cy="8" r="1.5"></circle>
+      <circle cx="11" cy="8" r="1.5"></circle>
+      <circle cx="5" cy="13" r="1.5"></circle>
+      <circle cx="11" cy="13" r="1.5"></circle>
+    </svg></div><input type="checkbox" class="layer-control-checkbox"><span class="layer-control-symbol" title="Background layers"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="1" width="10" height="10" fill="#d4c4a8" stroke="#666666" stroke-width="0.75" rx="1"></rect>
+    <rect x="2" y="3" width="10" height="10" fill="#8ec4e8" stroke="#666666" stroke-width="0.75" rx="1"></rect>
+    <rect x="0" y="5" width="10" height="10" fill="#a8d4a8" stroke="#666666" stroke-width="0.75" rx="1"></rect>
+  </svg></span><span class="layer-control-name" title="Background">Background</span><input type="range" class="layer-control-opacity" min="0" max="1" step="0.01" title="Opacity: 100%"><button class="layer-control-style-button layer-control-background-legend-button" title="Show background layer details" aria-label="Show background layer visibility controls" aria-expanded="false">⚙</button></div></div></div><div class="layer-control-context-menu" style="display: none;"><div class="context-menu-item"><span class="context-menu-item-icon">✏️</span><span class="context-menu-item-label">Rename</span></div><div class="context-menu-item"><span class="context-menu-item-icon">🔍</span><span class="context-menu-item-label">Zoom to Layer</span></div><div class="context-menu-separator"></div><div class="context-menu-item"><span class="context-menu-item-icon">↑</span><span class="context-menu-item-label">Move Up</span></div><div class="context-menu-item"><span class="context-menu-item-icon">⤒</span><span class="context-menu-item-label">Move to Top</span></div><div class="context-menu-item"><span class="context-menu-item-icon">↓</span><span class="context-menu-item-label">Move Down</span></div><div class="context-menu-item"><span class="context-menu-item-icon">⤓</span><span class="context-menu-item-label">Move to Bottom</span></div><div class="context-menu-separator"></div><div class="context-menu-item context-menu-item-danger"><span class="context-menu-item-icon">🗑️</span><span class="context-menu-item-label">Remove Layer</span></div></div></div></div><span aria-hidden="true" type="button" id="radix-_r_2h_" aria-haspopup="menu" aria-expanded="false" data-state="closed" style="position: fixed; left: 0px; top: 0px; width: 0px; height: 0px;"></span></div></main></div></div><footer class="flex h-7 shrink-0 items-center gap-4 whitespace-nowrap border-t bg-muted/40 px-3 font-mono text-xs text-muted-foreground overflow-hidden"><button type="button" class="shrink-0 rounded px-1 hover:bg-accent hover:text-accent-foreground" title="Coordinate format: Decimal degrees. Click to switch.">XY: —</button><span class="shrink-0">Zoom: 3.00</span><span class="shrink-0" title="Camera altitude above sea level">Eye alt: 9,635 km</span><span class="shrink-0">Bearing: 0.0°</span><span class="shrink-0">Pitch: 0.0°</span><span role="status" class="sr-only"></span><button type="button" class="inline-flex shrink-0 items-center gap-1 rounded px-1.5 py-0.5 hover:bg-accent hover:text-accent-foreground ms-auto text-red-700 dark:text-red-300"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bug h-3 w-3" aria-hidden="true"><path d="M12 20v-9"></path><path d="M14 7a4 4 0 0 1 4 4v3a6 6 0 0 1-12 0v-3a4 4 0 0 1 4-4z"></path><path d="M14.12 3.88 16 2"></path><path d="M21 21a4 4 0 0 0-3.81-4"></path><path d="M21 5a4 4 0 0 1-3.55 3.97"></path><path d="M22 13h-4"></path><path d="M3 21a4 4 0 0 1 3.81-4"></path><path d="M3 5a4 4 0 0 0 3.55 3.97"></path><path d="M6 13H2"></path><path d="m8 2 1.88 1.88"></path><path d="M9 7.13V6a3 3 0 1 1 6 0v1.13"></path></svg>Diag: 3</button></footer><div class="pointer-events-none fixed bottom-7 top-11 z-50 hidden w-px bg-primary shadow-[0_0_0_1px_hsl(var(--primary)/0.25)]"></div></div><section aria-label="Notifications" data-testid="notification-region" class="pointer-events-none fixed bottom-10 end-4 z-[60] flex w-[min(24rem,calc(100vw-2rem))] flex-col gap-2"><div role="alert" aria-live="assertive" class="flex flex-col gap-2 empty:hidden"></div><div role="status" aria-live="polite" class="flex flex-col gap-2 empty:hidden"></div></section></div>
+    <script src="./geolibre-runtime-config.js"></script>
+  
+
+</body></html>
